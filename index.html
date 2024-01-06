@@ -3,35 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HealthTech Hub</title>
     <style>
-        .column {
-            float: left;
-            font-size: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            width: 50%;
-            height: 400px;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(198, 224, 234);
             text-align: center;
-        }
-        .bgimgs {
-            background-image: url(https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHdvcmt8ZW58MHx8MHx8fDA%3D);
+            margin: 0;
+            padding: 0;
         }
 
+        header {
+            background-color: rgb(0, 133, 235);
+            color: white;
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #subscribe-form {
+            margin-top: 20px;
+        }
+
+        #countdown {
+            font-size: 24px;
+            color: rgb(0, 133, 235);
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Welcome to HealthTech Hub</h1>
+        <p>Unveiling the Future of Healthcare</p>
+    </header>
 
-    <div class = "row"> 
-    <div class = "column bgimgs" style = "background-color: pink"> 
-        <h1 style="margin-top: 20%;"> We Work </h1>
-        <h2> We are opening soon </h2>
-        <h3> You can rent office at affordable price </h3>
-    </div>
-    <div class = "column" style = "background-color: aqua"> 
-        <img width= "100%" height= "100%" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-    </div>
-    </div>
-    
+    <section>
+        <h2>Revolutionizing healthcare through innovative technology</h2>
+        <p>On a mission to enhance the quality of life, HealthTech Hub is dedicated to pioneering solutions that redefine possibilities in well-being.</p>
+        <p><strong>Coming Soon</strong></p>
+        <p>Stay tuned for exciting developments that will reshape healthcare as we know it. The future of well-being is just around the corner!</p>
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVhbHRoY2FyZXxlbnwwfHwwfHx8MA%3D%3D" alt="HealthTech Hub Image">
+        <p><strong>Embrace the future with HealthTech Hub!</strong></p>
 
+        <div id="subscribe-form">
+            <p>Subscribe to stay updated:</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <div id="countdown">
+            <p>Countdown to Launch:</p>
+            <div id="timer"></div>
+        </div>
+    </section>
+
+    <script>
+        // Set the launch date and time
+        const launchDate = new Date('January 15, 2024 00:00:00 GMT+0000').getTime();
+
+        // Update the countdown every second
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById('timer').innerHTML = 'Launching Now!';
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
+
